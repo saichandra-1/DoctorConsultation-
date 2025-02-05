@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Hero from "./Hero";
+import Hero from "./HeroComp";
 import SymptomSelector from "@/components/SymptomSelector";
 import PredictedDiseases from "@/components/PredictedDiseases";
 import Loader from "./Loader";

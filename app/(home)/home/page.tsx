@@ -1,9 +1,9 @@
-import Home  from "@/components/Home"
+import HomeComp  from "@/components/Home"
 
-export default function (){
+export default function Home(){
     return(
         <div>
-            <Home/>
+            <HomeComp/>
         </div>
     )
 }

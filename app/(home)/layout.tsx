@@ -1,7 +1,7 @@
 import Sidebar from "@/components/Sidebar";
 import { div } from "framer-motion/client";
 
-export default function RootLayout({
+export default function ({
     children,
   }: Readonly<{
     children: React.ReactNode;
