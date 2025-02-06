@@ -15,9 +15,9 @@ export default function Doctors() {
     <div className="p-6">
       <h2 className="text-3xl font-bold text-center mb-6">Available Doctors</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {doctors.map((doctor) => (
+        {/* {doctors.map((doctor) => (
           <DoctorCard key={doctor.id} doctor={doctor} />
-        ))}
+        ))} */}
       </div>
     </div>
   );
