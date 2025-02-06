@@ -40,6 +40,7 @@ export async function POST(req: Request) {
       predictedDiseases: Array.from(predictedDiseases),
     });
   } catch (error) {
+    console.error(error);
     return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
   }
 }
