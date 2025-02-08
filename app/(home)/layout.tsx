@@ -7,11 +7,10 @@ export default function RootLayout({
   }>) {
     return (
         <div className="flex">
-            <div className="fixed">
-            <Sidebar />
-            </div>
-            <div className="h-full w-full">
+            <div className="w-full">
+            <Sidebar >
               {children}
+            </Sidebar>
             </div>
         </div>
     );

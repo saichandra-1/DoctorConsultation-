@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Provider } from "./Provider";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,9 +19,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "MediPredict",
   description: "Doctor consult app with online diagnostics and nearby hospital diagnostics",
-  icons: {
-    icon: '/c.png',
-  }
+  // icons: {
+  //   icon: '/c.png',
+  // }
 };
 
 export default function RootLayout({
@@ -28,12 +30,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+<<<<<<< HEAD
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>
+=======
+    <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+        <Provider>
+          {children}
+        </Provider>
+        </body>
+>>>>>>> b43d0d0 (added auth 2)
     </html>
   );
 }
