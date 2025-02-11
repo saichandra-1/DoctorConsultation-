@@ -12,3 +12,24 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+
+
+model Patient {
+  id      String   @id @default(uuid())
+  name    String?  
+  email   String   @unique
+  password String  @unique
+  image    String?  
+  doctor  Doctor ?  @relation(fields: [doctorId], references: [id])
+  doctorId String?
+}
+
+
+model Doctor {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  password  String
+  patients  Patient[]
+}

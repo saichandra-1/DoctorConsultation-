@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { FiHome, FiCalendar, FiFileText, FiLogOut, FiLogIn } from "react-icons/fi";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 interface ChildrenProps {
   children: React.ReactNode;
@@ -10,6 +11,7 @@ interface ChildrenProps {
 const Sidebar = ({ children }: ChildrenProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const { data: session } = useSession(); 
+  const router = useRouter();
 
   return (
     <div className="flex">
@@ -19,33 +21,35 @@ const Sidebar = ({ children }: ChildrenProps) => {
           isOpen ? "w-64" : "w-20"
         }`}
       >
-        <div>
+        <div className="pr-1">
           <button onClick={() => setIsOpen(!isOpen)} className="mb-4 text-2xl">
             ☰
           </button>
           <ul>
-            <li className="flex items-center p-3 gap-3 hover:bg-gray-800 rounded-md">
+            <li className="flex items-center p-3 gap-3 hover:bg-gray-800 rounded-md cursor-pointer"
+              onClick={() => router.push("/home")}>
               <FiHome />
               <span className={`${isOpen ? "block" : "hidden"} whitespace-nowrap`}>Home</span>
             </li>
-            <li className="flex items-center p-3 gap-3 hover:bg-gray-800 rounded-md">
+            <li className="flex items-center p-3 gap-3 hover:bg-gray-800 rounded-md cursor-pointer"
+            onClick={() => router.push("/appointments")}>
               <FiCalendar />
               <span className={`${isOpen ? "block" : "hidden"} whitespace-nowrap`}>Appointments</span>
             </li>
-            <li className="flex items-center p-3 gap-3 hover:bg-gray-800 rounded-md">
+            <li className="flex items-center p-3 gap-3 hover:bg-gray-800 rounded-md cursor-pointer">
               <FiFileText />
               <span className={`${isOpen ? "block" : "hidden"} whitespace-nowrap`}>Invoices</span>
             </li>
           </ul>
         </div>
-        <div className="hover:bg-gray-800 p-3 rounded-md">
+        <div className="hover:bg-gray-800 pl-1 rounded-md">
           {session ? (
-            <button onClick={() => signOut()} className="text-red-500 flex items-center gap-3 w-full">
+            <button onClick={() => signOut()} className="text-red-500 flex items-center gap-3 p-3 w-full">
               <FiLogOut />
               <span className={`${isOpen ? "block" : "hidden"} whitespace-nowrap`}>Logout</span>
             </button>
           ) : (
-            <button onClick={() => signIn()} className="text-green-500 flex items-center gap-3 w-full">
+            <button onClick={() => signIn()} className="text-green-500 flex items-center gap-3 p-3 w-full">
               <FiLogIn />
               <span className={`${isOpen ? "block" : "hidden"} whitespace-nowrap`}>Login</span>
             </button>
@@ -54,8 +58,8 @@ const Sidebar = ({ children }: ChildrenProps) => {
       </div>
 
       {/* Main Content */}
-      <div className={`p-4 transition-all duration-300 w-full ${isOpen ? "ml-64" : "ml-20"}`}>
-        {children}
+      <div className={`pl-1 transition-all duration-300 w-full ${isOpen ? "ml-64" : "ml-20"}`}>
+        {children}         
       </div>
     </div>
   );
