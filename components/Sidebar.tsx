@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { FiHome, FiCalendar, FiFileText, FiLogOut, FiLogIn } from "react-icons/fi";
+import { FaUserDoctor } from "react-icons/fa6";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -32,9 +33,14 @@ const Sidebar = ({ children }: ChildrenProps) => {
               <span className={`${isOpen ? "block" : "hidden"} whitespace-nowrap`}>Home</span>
             </li>
             <li className="flex items-center p-3 gap-3 hover:bg-gray-800 rounded-md cursor-pointer"
-            onClick={() => router.push("/appointments")}>
+            onClick={() => router.push("/doctors")}>
+              <FaUserDoctor />
+              <span className={`${isOpen ? "block" : "hidden"} whitespace-nowrap`}>Doctors</span>
+            </li>
+            <li className="flex items-center p-3 gap-3 hover:bg-gray-800 rounded-md cursor-pointer"
+            onClick={() => router.push("/meet")}>
               <FiCalendar />
-              <span className={`${isOpen ? "block" : "hidden"} whitespace-nowrap`}>Appointments</span>
+              <span className={`${isOpen ? "block" : "hidden"} whitespace-nowrap`}>Meet</span>
             </li>
             <li className="flex items-center p-3 gap-3 hover:bg-gray-800 rounded-md cursor-pointer">
               <FiFileText />

@@ -1,9 +1,12 @@
+import { Suspense } from "react";
+import { AppointmentsComp } from "../../../components/Appointmentscomp";
 
-import {Appointmentscomp} from "../../../components/Appointmentscomp";
 export default function Appointments() {
   return (
-    <div>
-      <Appointmentscomp />
+    <div className="container mx-auto">
+      <Suspense fallback={<div>Loading...</div>}>
+        <AppointmentsComp />
+      </Suspense>
     </div>
   );
 }

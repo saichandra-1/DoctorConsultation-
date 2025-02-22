@@ -1,10 +1,22 @@
 "use client"
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Avatar  from "@mui/material/Avatar";
 import { motion } from "framer-motion";
+import { useSession } from "next-auth/react";
 
-const Profile = ({ name = "jhon deo", email = "jhondeo@gmail.com", password = "password" }) => {
+const Profile = ({ password = "password" }) => {
   const [showDetails, setShowDetails] = useState(false);
+  const { data: session } = useSession(); 
+  const [email,setEmail]=useState("");
+  const [name,setName] = useState("");
+  useEffect(()=>{
+    if(session){
+      const email=session.user?.email;
+      const name=session.user?.name;
+      setEmail(email||"");
+      setName(name||"");
+    }
+  },[session])
 
   const toggleDetails = () => {
     setShowDetails(!showDetails);

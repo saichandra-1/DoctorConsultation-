@@ -13,5 +13,5 @@ export const symptomsList = [
     "sore_throat",
     "diarrhea",
     "weight_loss",
-  ];
+    ];
   
